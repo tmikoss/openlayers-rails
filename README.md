@@ -18,4 +18,4 @@ Or install it yourself as:
 
 ## Usage
 
-Add `//= require openlayers-rails` to your application.js manifest file.
+Add `//= require openlayers-rails` to your `app/assets/javascripts/application.js` manifest file.
