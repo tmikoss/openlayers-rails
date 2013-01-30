@@ -6,6 +6,7 @@ task :update_from_source do
   current_directory = File.expand_path File.dirname(__FILE__)
   source_directory  = File.join current_directory, 'openlayers'
   assets_directory  = File.join current_directory, 'vendor', 'assets'
+  docs_directory    = File.join current_directory, 'doc'
 
   puts "Updating sources..."
 
@@ -30,16 +31,13 @@ task :update_from_source do
   end
 
   {
-    "img/*" => "images/openlayers/img",
-    "theme/default/img/*" => "images/openlayers/theme/default/img",
-    "theme/default/*.css" => "stylesheets/openlayers/theme/default"
+    "img/*"               => File.join(assets_directory, "images/openlayers/img"),
+    "theme/default/img/*" => File.join(assets_directory, "images/openlayers/theme/default/img"),
+    "theme/default/*.css" => File.join(assets_directory, "stylesheets/openlayers/theme/default"),
+    "licenses/*"          => File.join(docs_directory, "licenses")
   }.each do |source, destination|
-    source      = File.join source_directory, source
-    destination = File.join assets_directory, destination
-
     FileUtils.mkdir_p destination
-
-    FileUtils.cp_r Dir.glob(source), destination
+    FileUtils.cp_r Dir.glob(File.join source_directory, source), destination
   end
 
   puts "Done! Now update version information and release!"
