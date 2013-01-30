@@ -1,6 +1,6 @@
-# Openlayers::Rails
+# openlayers-rails
 
-[OpenLayers](http://openlayers.org/) library packed for use in Ruby on Rails asset pipeline.
+[OpenLayers](http://openlayers.org/) library packed for use in Ruby on Rails asset pipeline. Currently includes OpenLayers version 2.12
 
 ## Installation
 
@@ -18,12 +18,4 @@ Or install it yourself as:
 
 ## Usage
 
-
-
-## Contributing
-
-1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
+Add `//= require openlayers-rails` to your application.js manifest file.
