@@ -8,10 +8,10 @@ Gem::Specification.new do |gem|
   gem.version       = Openlayers::Rails::VERSION
   gem.authors       = ["Toms Mikoss"]
   gem.email         = ["toms.mikoss@gmail.com"]
-  gem.description   = %q{OpenLayers library packaged for easy inclusion in Ruby on Rails asset pipeline}
-  gem.summary       = %q{OpenLayers library packaged for easy inclusion in Ruby on Rails asset pipeline}
+  gem.description   = %q{OpenLayers library packaged for easy inclusion in Ruby on Rails asset pipeline.}
+  gem.summary       = gem.description
 
-  gem.files         = `git ls-files`.split($/)
+  gem.files         = `git ls-files`.split($/) - ['openlayers', 'Gemfile', 'Gemfile.lock', 'Rakefile']
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ["lib"]
