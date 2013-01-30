@@ -21,7 +21,7 @@ task :update_from_source do
   build_destination = File.join assets_directory, 'javascripts', 'openlayers', 'OpenLayers.js'
 
   FileUtils.mkdir_p File.dirname build_destination
-  `cd #{build_dir} && python ./build.py ./full.cfg #{build_destination}`
+  `cd #{build_dir} && python ./buildUncompressed.py full #{build_destination}`
 
   puts "Copying over other files..."
 
