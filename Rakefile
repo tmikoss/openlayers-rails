@@ -2,7 +2,7 @@ require "bundler/gem_tasks"
 require "fileutils"
 
 desc "Update included OpenLayers sources"
-task :update_from_source do
+task :update_from_source, [:compression, :config_file, :output_file] do |t, args|
   current_directory = File.expand_path File.dirname(__FILE__)
   source_directory  = File.join current_directory, 'openlayers'
   assets_directory  = File.join current_directory, 'vendor', 'assets'
@@ -19,10 +19,17 @@ task :update_from_source do
   puts "Building the main JS file..."
 
   build_dir         = File.join source_directory, 'build'
-  build_destination = File.join assets_directory, 'javascripts', 'openlayers', 'OpenLayers.js'
+  build_destination = args.output_file || File.join(assets_directory, 'javascripts', 'openlayers', 'OpenLayers.js')
+
+  config_file       = args.config_file || 'full'
+  compression       = args.compression || 'none'
+  verbose           = ENV['QUIET'].nil?
 
   FileUtils.mkdir_p File.dirname build_destination
-  `cd #{build_dir} && python ./buildUncompressed.py full #{build_destination}`
+  cmd = "cd #{build_dir} && python ./build.py -c #{compression} #{config_file} #{build_destination}"
+  IO.popen(cmd).each_line do |line|
+    puts "> #{line}" if verbose
+  end
 
   puts "Copying over other files..."
 
