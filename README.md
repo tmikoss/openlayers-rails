@@ -2,6 +2,10 @@
 
 [OpenLayers](http://openlayers.org/) library packed for use in Ruby on Rails asset pipeline. Currently includes OpenLayers version 2.12
 
+## This gem is not being actively maintained
+
+I no longer work on projects involving OpenLayers, so this gem won't receive updates as fast/often as it should. Consider using `rails-assets-openlayers` gem from https://rails-assets.org/
+
 ## Installation
 
 Add this line to your application's Gemfile:
